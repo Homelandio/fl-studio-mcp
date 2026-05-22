@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+.venv/venv/
+.env
+*.log
+mcp_command.json
+mcp_response.json
+mcp_request.json
+piano_roll_state.json
+*.bak
+*.zip
+*.exe
