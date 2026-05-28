@@ -730,7 +730,7 @@ def handle_plugins_get_params(params: dict) -> dict:
     for i in range(min(param_count, max_params)):
         try:
             name = plugins.getParamName(i, index, slot_index, use_global)
-            value = plugins.getParamValue(i, index, slot_index, use_global)
+            value = plugins.getParamValue(index, i, slot_index, use_global)
             value_str = plugins.getParamValueString(i, index, slot_index, use_global)
 
             param_list.append({
@@ -754,7 +754,7 @@ def handle_plugins_get_param_value(params: dict) -> dict:
     use_global = params.get("use_global", True)
 
     name = plugins.getParamName(param_index, plugin_index, slot_index, use_global)
-    value = plugins.getParamValue(param_index, plugin_index, slot_index, use_global)
+    value = plugins.getParamValue(plugin_index, param_index, slot_index, use_global)
     value_str = plugins.getParamValueString(param_index, plugin_index, slot_index, use_global)
 
     return {
@@ -776,12 +776,12 @@ def handle_plugins_set_param_value(params: dict) -> dict:
     if slot_index >= 0:
         name = plugins.getParamName(param_index, plugin_index, slot_index, True)
         plugins.setParamValue(value, param_index, plugin_index, slot_index, True)
-        new_value = plugins.getParamValue(param_index, plugin_index, slot_index, True)
+        new_value = plugins.getParamValue(plugin_index, param_index, slot_index, True)
         value_str = plugins.getParamValueString(param_index, plugin_index, slot_index, True)
     else:
         name = plugins.getParamName(param_index, plugin_index, 0, use_global)
         plugins.setParamValue(value, param_index, plugin_index, 0, use_global)
-        new_value = plugins.getParamValue(param_index, plugin_index, 0, use_global)
+        new_value = plugins.getParamValue(plugin_index, param_index, 0, use_global)
         value_str = plugins.getParamValueString(param_index, plugin_index, 0, use_global)
 
     return {
